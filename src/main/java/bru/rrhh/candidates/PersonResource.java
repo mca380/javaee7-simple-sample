@@ -1,6 +1,5 @@
-package org.javaee7.sample;
+package bru.rrhh.candidates;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

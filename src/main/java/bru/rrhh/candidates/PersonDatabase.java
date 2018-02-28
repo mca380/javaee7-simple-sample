@@ -1,4 +1,4 @@
-package org.javaee7.sample;
+package bru.rrhh.candidates;
 
 import java.util.Arrays;
 import java.util.List;

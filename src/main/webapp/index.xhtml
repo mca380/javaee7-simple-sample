@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>
+            App Candidatos
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/materia/bootstrap.min.css" rel="stylesheet" integrity="sha384-kpxyUW5uLgBOlhLqm8Hga/aWgf7FgZWLhphVqsMgaW0s+G6KF1RZpUb6ygQL3WUE" crossorigin="anonymous"/>
+</h:head>
+<h:body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">BRUJULA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:location.reload()">Reload<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br></br><br></br>
+    <h:form>
+    <p:growl id="growl" sticky="true" showDetail="true"/>
+    <p:tab id="personal" title="Personal">
+        <p:panel header="Acceso al sistema">
+            <p:messages />
+            <h:panelGrid columns="2" columnClasses="label, value">
+                <h:outputText value="Usuario: *" />
+                <p:inputText value="#{user.Usuario}" required="true" label="Usuario"/>
+                <h:outputText value="Clave: *" />
+                <p:password value="#{user.Clave}" required="true" label="Clave"/>
+            </h:panelGrid>
+            <br></br>
+            <p:commandButton value="Entrar" actionListener="#{userWizard.Entrar}" update="growl" process="@this"/>
+        </p:panel>
+    </p:tab>
+    </h:form>
+</h:body>
+</html>

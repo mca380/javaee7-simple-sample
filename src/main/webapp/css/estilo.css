@@ -1,0 +1,22 @@
+.cuerpo {
+    background-image: url("img/pc2.jpeg");
+    font-family: Raleway, sans-serif;
+}
+
+.registro{
+    text-align: center;
+    background-color: rgba(233, 236, 235, 0.801);
+    float: inherit;
+    padding-top: 500px;
+    padding-right: 500px;
+    padding-bottom: 50px;
+    padding-left: 700px;
+    opacity: 0.9;
+}
+
+.registro2{
+    text-align: center;
+    float: right;
+    color: #4e504f;
+    padding: 5%;
+}

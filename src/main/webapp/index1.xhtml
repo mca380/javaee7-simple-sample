@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>
+        App Candidatos
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-UU2jkdv1M9UEjLje/kygVxqMBq9Jrg9z+Gqvw972H6BqKTzDvLaRJfK7PnzLM4SI" crossorigin="anonymous"/>
+
+</h:head>
+<h:body styleClass="cuerpo">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="http://www.brujula.es/">BRÚJULA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.xhtml">Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index1.xhtml">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index2.xhtml">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br></br>
+
+    <h:form>
+
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+
+        <p:wizard flowListener="#{userWizard.onFlowProcess}" styleClass="registro">
+            <p:tab id="personal" title="Personal">
+                <p:panel header="Información personal">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Nombre: *" />
+                        <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+
+                        <h:outputText value="Apellido: *" />
+                        <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+
+                        <h:outputText value="Directo al final: " />
+                        <h:selectBooleanCheckbox value="#{userWizard.skip}" />
+                    </h:panelGrid>
+                </p:panel>
+            </p:tab>
+
+
+            <p:tab id="contact" title="Contacto">
+                <p:panel header="Información de contactco">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Email: *" />
+                        <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
+
+
+                        <h:outputText value="Departamento: " />
+                        <p:selectOneMenu for="info" value="#{userWizard.user.info}" style="width: 125px" >
+                            <f:selectItem id="info" itemLabel="RRHH" itemValue="Recursos Humanos"/>
+                            <f:selectItem  itemLabel="Programación" itemValue="Programación"/>
+                            <f:selectItem  itemLabel="X" itemValue="X"/>
+                            <f:selectItem  itemLabel="Y" itemValue="Y"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value="Directo al final: " />
+                        <h:selectBooleanCheckbox value="#{userWizard.skip}" />
+                    </h:panelGrid>
+                </p:panel>
+            </p:tab>
+
+            <p:tab id="pass" title="Clave">
+                <p:panel header="Configurar Clave">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+
+                        <h:outputLabel for="pwd1" value="Clave: *" />
+                        <p:password id="pwd1" value="#{passwordView.password5}" match="pwd2" label="Password 1" required="true" />
+
+                        <h:outputLabel for="pwd2" value="Confirmar Clave: *" />
+                        <p:password id="pwd2" value="#{passwordView.password5}" label="Password 2" required="true" />
+
+
+                        <h:outputText value="Directo al final: " />
+                        <h:selectBooleanCheckbox value="#{userWizard.skip}" />
+                    </h:panelGrid>
+                </p:panel>
+            </p:tab>
+
+            <p:tab id="confirm" title="Confirmación">
+                <p:panel header="Confirmación">
+                    <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Nombre: " />
+                            <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Apellido: " />
+                            <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+                        </h:panelGrid>
+
+
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Correo: " />
+                            <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+
+
+                            <h:outputText value="Departamento: " />
+                            <h:outputText value="#{userWizard.user.info}" styleClass="outputLabel"/>
+
+                            <h:outputText />
+                            <h:outputText />
+                        </h:panelGrid>
+                    </h:panelGrid>
+
+                   <p:splitButton value="Registro" actionListener="#{userWizard.save}" update="growl" process="@this">
+                       <p:separator/>
+                       <p:menuitem value="Entrar" url="index2.xhtml" icon="ui-icon-extlink"/>
+                   </p:splitButton>
+                </p:panel>
+            </p:tab>
+        </p:wizard>
+
+    </h:form>
+</h:body>
+</html>

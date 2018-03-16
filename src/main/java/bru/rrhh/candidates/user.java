@@ -1,27 +1,64 @@
 package bru.rrhh.candidates;
 
+
+        import java.io.Serializable;
+
 /**
- * Created by mcanovas on 13/03/2018.
+ * Created by mcanovas on 14/03/2018.
  */
-public class user {
 
-        private String Usuario;
 
-        private String Clave;
 
-    public String getUsuario(){
-        return Usuario;
+public class User implements Serializable {
+
+    private String firstname;
+
+    private String lastname;
+
+
+    private String info;
+
+    private String email;
+
+    private String pass;
+
+    public String getFirstname() {
+        return firstname;
     }
-    public void setUsuario(String usuario) {
-        Usuario = usuario;
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getClave() {
-        return Clave;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setClave(String clave) {
-        Clave = clave;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
+
+
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
 
 }
